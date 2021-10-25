@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Face Detector</title>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	</head>
+	<body>
+		<div class="row">
+			<div class="col-sm-4">
+				<h3 >Take Photo</h3>
+				<div class="mb-3">
+					<img src="{{ url_for('video_feed') }}" width="400px" height="auto" style="background-color: #A9A9A9; border-radius: 10px">
+				</div>
+			    <form method="POST" action="{{ url_for('tasks') }}">
+					<button class="btn btn-danger" type="submit" value="On/Off" name="on_off">On / Off Camera</button>
+					<button class="btn btn-warning" type="submit" value="Take_Photo" name="take_photo">Click Photo</button>
+				</form>
+				<p>Please turn on camera to take photos.</p>	   
+				<form method="POST" action="{{ url_for('predictionTakenPhoto') }}">
+					<div class="form-group">
+						<button class="btn btn-success" type="submit" name="btn">Proceed</button>
+					</div>
+				</form>
+			</div>
+			<div class="col-sm-4">
+				<h3>Your Photo</h3>
+				<div class="mb-3">
+					<img src="{{ url_for('static', filename='img.png') }}" width="400px" height="auto" style="background-color: #A9A9A9; border-radius: 10px" alt="Please click a photo!">
+				</div>
+			</div>
+		</div>
+		<script src="{{ url_for('static', filename='app2.js') }}">
+		</script>
+	</body>
+</html>
